@@ -1,0 +1,19 @@
+1. Run the container as a non-root user
+
+root is the default user inside a Docker container.
+If you do not specify a user while starting a container, it will run by default as the user set in the image (last USER command in the Dockerfile) 
+or the one inherited from the parent image file (specified by the FROM command in the Dockerfile).
+
+It is recommended to create a non-root user to run the first process of the container. In addition to this, any non-required users must be deleted.
+
+2. Remove unnecessary packages/software from the image
+
+Having unnecessary packages in the Docker images not just bloats the size of the image, but it also increases the attack surface of the container.
+All the Docker images must be carefully examined for installed packages, and only the packages required for the functioning of the service(s) 
+in the container must be included.
+
+3. Scan and rebuild images to include security patches
+
+Whether you are building your Docker image from scratch or you are building them on top of the third-party image,
+it is very important to have your images scanned for vulnerabilities as part of your continuous integration process.
+This includes scanning included packages, binaries, libraries, files, etc. against one or more well-known vulnerabilities databases.
