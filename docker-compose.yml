@@ -1,0 +1,7 @@
+version: "2"
+services:
+  app:
+    image: ubuntu
+   hostname: ubuntu
+  container_name: ubutnu
+  command: sh -c "/tmp/check_pull_requests.sh"
