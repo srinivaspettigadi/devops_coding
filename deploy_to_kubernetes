@@ -1,0 +1,10 @@
+Converting docker-compose.yml file to kubernetes file and deploying it in 
+
+
+kompose convert -f docker-compose.yml -o kubemanifests.yaml
+kubectl apply -f kubemanifests.yaml
+kubectl get pods
+
+checking the images
+---------------------
+docker images | grep ubuntu
