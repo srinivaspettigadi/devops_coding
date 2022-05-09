@@ -1,0 +1,30 @@
+# Configure the AWS Provider
+provider "aws" {
+    access_key = "AKIA363WMYFVLD66WQ7N"
+    secret_key = "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"
+    region = "us-east-1"
+}
+
+## Creating an AWS instance 
+#------------------  #
+
+variable "subnet_pub1" {
+  description = "public Subnet 1"
+  default = "subnet-00bd99160fe73ef21"
+}
+
+resource "aws_instance" "Instance_from_terraform" {
+  ami           = "ami-09d56f8956ab235b3"
+  instance_type = "t2.micro"
+  subnet_id = "${var.subnet_pub1}"
+  tags = {
+    Name = "Terraform_instancess"
+  }
+}
+ 
+ resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
